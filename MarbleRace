@@ -1,0 +1,33 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "BaconBoss Hub | Limited Marble Race", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+
+_G.win = true
+function win()
+     while _G.win == true do
+        for _, child in pairs(game.Workspace.Race.Balls:GetChildren()) do
+            if child:IsA("BasePart") and child.Name ~= "Part" then
+                child.CFrame = game.Workspace.Race.Race.ClassicEnd.Goal.CFrame
+            end
+        end
+     wait(0)
+    end
+end
+
+local TpTab = Window:MakeTab({
+	Name = "Main",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+TpTab:AddLabel("Note: Everyone Is Hacking So You Have A Chance To Win")
+TpTab:AddLabel("BUT ITS SUPER EASY")
+
+TpTab:AddToggle({
+	Name = "Auto Win",
+	Default = false,
+	Callback = function(Value)
+		_G.win = Value
+        win()
+	end    
+})
+ 
